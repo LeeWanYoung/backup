@@ -1,0 +1,110 @@
+a {
+    text-decoration: none;
+    color: black;
+  }
+
+
+.container1 {
+	position: relative;
+	margin-right: 0;
+	margin-left: 0;
+
+  }
+  
+  
+  .logo-section {
+	display: flex;
+	align-items: center;
+  }
+  
+  .kt-logo {
+	height: 40px;
+    margin-top: 20px;
+	margin-left: 20px;
+  }
+  
+  .aici-text{
+	font-size: 18px;
+	font-weight: bold;
+    margin-top: 20px;
+  }
+
+  a{
+		text-decoration: none;
+	color: inherit;
+  }
+
+  .header{
+	margin: auto;
+  }
+
+  .ul-head{
+	float:left; 
+	text-align:center;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+  }
+
+ li { 
+	display:inline-block; 
+	text-align:center;
+
+  	
+}
+
+ li a:hover:not(.current) {
+	background-color: #ff0000;
+	color: white;
+
+ }
+
+ .nav-li{
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-right: 10px;
+	
+ }
+
+ .logout-section {
+	margin: auto;
+  float: right;
+  align: center;
+  margin-top: 30px;
+}
+
+.logout-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+img, svg {
+    vertical-align: baseline;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl{
+	margin-right: 0;
+    margin-left: 0;
+
+}
+
+
+  @media (max-width: 768px) {
+	.kt-logo {
+	  height: 30px;
+	}
+  
+	.aici-text {
+	  font-size: 12px;
+	}
+  
+	.logout-text {
+	  font-size: 12px;
+	}
+  }
+
+  
+  

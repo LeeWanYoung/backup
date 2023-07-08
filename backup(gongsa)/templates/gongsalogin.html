@@ -1,0 +1,47 @@
+{% comment %} {% extends "gongsa/base_gongsa.html" %} {% endcomment %}
+
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static '/login.css' %}">
+    <!-- Add any other static file connections (CSS files, etc.) here -->
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'images//01_kt_wordmark__standard__01_2.png' %}" alt="KT Logo" class="kt-logo-big">
+        </div>
+        <h2>Login</h2>
+        <form method="post" action="{% url 'gongsa:login' %}">
+            {% csrf_token %}
+            {% include 'gongsa/form_errors.html' %} <!-- 코드 추가 -->
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            <!-- 추가 -->
+            {% endif %}
+            <div class="form-group">
+                <label for="username">Account ID</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Account Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <center>
+            <button type="submit" class="login-button">LOGIN</button>
+            </center>
+        </form>
+    </div>
+    <p class ="footer_login">Copyright © KT_AIVLE 31</p>
+</body>
+</html>
+{% endblock %}

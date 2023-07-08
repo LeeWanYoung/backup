@@ -1,0 +1,99 @@
+.container_base {
+	position: relative;
+  }
+  
+  
+  .logo-section {
+	display: flex;
+	align-items: center;
+  }
+  
+  .kt-logo_base {
+
+    margin-top: 5px;
+	margin-left: 20px;
+	
+  }
+  
+  .aici-text_base{
+	font-size: 18px;
+	font-weight: bold;
+    margin-top: 20px;
+  }
+
+  a{
+	text-decoration: none;
+	color: inherit;
+  }
+
+
+ li { float: left;}
+
+ li a:hover:not(.current) {
+	background-color: #ff0000;
+	color: white;
+
+ }
+
+  @media (max-width: 768px) {
+	.kt-logo {
+	  height: 30px;
+	}
+  
+	.aici-text {
+	  font-size: 12px;
+	}
+  
+	.logout-text {
+	  font-size: 12px;
+	}
+  }
+
+  @font-face {
+	font-family: "Ycomputer";
+	src:url('fonts/Ycomputer.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: "YdestreetB";
+	src:url('fonts/YdestreetB.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: "YdestreetL";
+	src:url('fonts/YdestreetL.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: "YUniverse-B";
+	src:url('fonts/YUniverse-B.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: "YUniverse-L";
+	src:url('fonts/YUniverse-L.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: "Ycomputer";
+	src:url('fonts/Ycomputer.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: "Y너만을비춤체";
+	src:url('fonts/Y너만을비춤체.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+  }

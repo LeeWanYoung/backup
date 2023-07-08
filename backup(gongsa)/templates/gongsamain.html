@@ -1,0 +1,66 @@
+{% comment %} {% extends "gongsa/base_gongsa.html" %} {% endcomment %}
+
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static '/gongsamain.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="{% static '/gongsamain.js' %}"></script>
+    {% endblock %}
+
+{% block content %}
+<body>
+    <header>
+        <div class="container_gongsa_base">
+            <a href="/gongsa/main"><img src="{% static 'images//01_kt_wordmark__standard__01_2.png' %}" alt="KT Logo" class="kt-logo_gongsa_base"></a>
+            <a href="/gongsa/main"><span class="aici-text_gongsa_base">AICI</span></a>
+            <div class="logout-section_gongsa_base">
+                <span>
+                    <form action="{% url 'gongsa:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button_gongsa_base">Logout</button>
+                    </form>
+                </span>
+            </div>
+            
+        </div>
+    </header>
+{% comment %} <div class="container"> {% endcomment %}
+        {% comment %} <div class="logo-section">
+            <img src="{% static 'images//01_kt_wordmark__standard__01_2.png' %}" alt="KT Logo" class="kt-logo">
+            <span class="aici-text">AICI</span>
+        </div> {% endcomment %}
+        {% comment %} <div class="logout-section">
+            <span class="logout-text">Logout</span>
+        </div> {% endcomment %}      
+{% comment %} </div> {% endcomment %}
+<div class="container2">
+    <div class="row-container">
+        <div class="column-container">
+            <div class="icon-container">
+                <i class="icon fas fa-wrench"></i>
+            </div>
+            <div class="text-container">
+                <h2>공사 접수</h2>
+                <p>사외 공사를 접수할 수 있는 페이지입니다.</p>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="showConfirmation()">접수하러 가기</button>
+            </div>
+        </div>
+        <div class="column-container">
+            <div class="icon-container">
+                <i class="icon fas fa-check-circle"></i>
+            </div>
+            <div class="text-container">
+                <h2>접수 내용</h2>
+                <p>접수한 공사를 확인 및 수정할 수 있습니다.</p>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToConfirmation()">접수 확인하기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

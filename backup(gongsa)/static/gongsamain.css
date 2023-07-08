@@ -1,0 +1,186 @@
+.container {
+	position: relative;
+  }
+  
+  .header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: #f1f1f1;
+	margin-bottom: 10px;
+  }
+  
+  .logo-section {
+	display: flex;
+	align-items: center;
+  }
+  
+  .kt-logo {
+	height: 40px;
+	margin-right: 10px;
+  }
+  
+  .aici-text {
+	font-size: 14px;
+	font-weight: bold;
+  }
+
+  .logout-section {
+	margin-left: auto;
+  }
+  
+  .logout-text {
+	font-size: 14px;
+  }
+  .container2 {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 20px;
+  }
+  
+  .row-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 20px;
+  }
+  
+  .column-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 10px;
+  }
+  
+  .icon-container {
+	margin-bottom: 10px;
+  }
+  
+  .icon {
+	font-size: 50px;
+	color: #007bff;
+  }
+  
+  .text-container {
+	text-align: center;
+	margin-bottom: 10px;
+  }
+  
+  .button-container {
+	margin-bottom: 20px;
+  }
+  
+  .button {
+	background-color: #ff0000;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  
+  .button:hover {
+	background-color: #0056b3;
+  }
+
+  /* 이 밑은 공사베이스 css  */
+  #base_gongsa.css
+
+
+.container_gongsa_base {
+	position: relative;
+  }
+  
+  
+  .logo-section_gongsa_base {
+	display: flex;
+	align-items: center;
+  }
+  
+  .kt-logo_gongsa_base {
+	height: 40px;
+    margin-top: 20px;
+	margin-left: 20px;
+  }
+  
+  .aici-text_gongsa_base{
+	font-size: 18px;
+	font-weight: bold;
+    margin-top: 20px;
+  }
+
+  a{
+		text-decoration: none;
+	color: inherit;
+  }
+
+  .header_gongsa_base{
+	margin: auto;
+  }
+
+  .ul-head_gongsa_base{
+	float:left; 
+	text-align:center;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+  }
+
+ li { 
+	display:inline-block; 
+	text-align:center;
+
+  	
+}
+
+ li a:hover:not(.current) {
+	background-color: #ff0000;
+	color: white;
+
+ }
+
+ .nav-li_gongsa_base{
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-right: 10px;
+	
+ }
+
+ .logout-section_gongsa_base {
+	margin: auto;
+  float: right;
+  align: center;
+  margin-top: 30px;
+}
+
+.logout-button_gongsa_base {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+  @media (max-width: 768px) {
+	.kt-logo_gongsa_base {
+	  height: 30px;
+	}
+  
+	.aici-text_gongsa_base {
+	  font-size: 12px;
+	}
+  
+	.logout-text_gongsa_base {
+	  font-size: 12px;
+	}
+  }
+
+  
+  

@@ -1,0 +1,233 @@
+/* Head */
+header {
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f1f1f1;
+  padding: 10px;
+  z-index: 100;
+}
+
+/* Body */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+.container {
+  position: relative;
+}
+
+.content-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ccc;
+  min-height: calc(100vh - 80px); /* Adjust the min-height to account for the fixed header */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.quick-menu {
+  width: 200px;
+  background-color: #f1f1f1;
+  vertical-align: top;
+  padding-bottom: 40px;
+}
+
+.quick-menu-area {
+  width: 200px;
+  height: 150px;
+  background-color: #f1f1f1;
+}
+
+.quick-menu-title {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #adb5bd;
+  text-align: center;
+}
+
+.quick-menu-items {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.quick-menu-items li {
+  margin-bottom: 20px;
+}
+
+.quick-button {
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.center-screen {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start; /* Align content at the top */
+}
+
+.construction-status,
+.voc-status {
+  text-align: center;
+}
+
+.recent-situation {
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.status-box {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  width: 800px;
+  height: 200px;
+}
+
+.status-item {
+  background-color: #f1f1f1;
+  display: flex;
+  flex: 1;
+  margin: 0px 5% 5%;
+  width: 30%;
+  flex-direction: column;
+}
+
+.status-label {
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-value {
+  font-size: 32px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10%;
+}
+
+.quick-menu-list {
+  display: block;
+  color: #000000;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.quick-menu-list a {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.logout-button {
+  font-size: 20px;
+  float: right;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 45px;
+}
+
+/* 베이스 css */
+.container_base {
+  position: relative;
+}
+
+.kt-logo_base {
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.aici-text_base {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* 수정된 부분 */
+.content-section {
+  flex-direction: row; /* 가로 정렬 */
+}
+
+.center-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start; /* Align content at the top */
+}
+
+.quick-menu {
+  width: 200px;
+  background-color: #f1f1f1;
+  margin-right: 20px; /* 오른쪽 마진 추가 */
+}
+
+@font-face {
+  font-family: "Ycomputer";
+  src:url('fonts/Ycomputer.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YdestreetB";
+  src:url('fonts/YdestreetB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YdestreetL";
+  src:url('fonts/YdestreetL.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YUniverse-B";
+  src:url('fonts/YUniverse-B.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YUniverse-L";
+  src:url('fonts/YUniverse-L.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ycomputer";
+  src:url('fonts/Ycomputer.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Y너만을비춤체";
+  src:url('fonts/Y너만을비춤체.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

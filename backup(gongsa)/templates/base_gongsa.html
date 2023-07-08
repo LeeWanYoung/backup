@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static '/base_gongsa.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+
+    {% block static %}
+    {% endblock %} 
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <header>
+        <div class="container_gongsa_base">
+            <a href="/gongsa/main"><img src="{% static 'images//01_kt_wordmark__standard__01_2.png' %}" alt="KT Logo" class="kt-logo_gongsa_base"></a>
+            <a href="/gongsa/main"><span class="aici-text_gongsa_base">AICI</span></a>
+            <div class="logout-section_gongsa_base">
+                <span>
+                    <form action="{% url 'gongsa:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-button_gongsa_base">Logout</button>
+                    </form>
+                </span>
+            </div>
+        </div>
+        
+        <div class='header_gongsa_base'>
+            <ul class='ul-head_gongsa_base'> 
+               <li class = 'nav-li_gongsa_base'><a href='/gongsa/upload/'>공사 접수</a></li>
+               <li class = 'nav-li_gongsa_base'><a href='/gongsa/worklist/'>접수 확인</a></li>
+            </ul>
+        </div> 
+    </header>
+    <script src="{% static 'bootstrap.js' %}"></script>
+
+    {% block content %} 
+  		<!-- base.html을 상속한 템플릿에서 구현해야 하는 영역 -->
+    {% endblock %}
+</body>
+</html>

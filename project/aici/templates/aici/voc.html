@@ -1,0 +1,392 @@
+{% load static %}
+{% block static %}
+    <!-- Static files (CSS, JavaScript) -->
+    <link rel="stylesheet" href="{% static 'voc.css' %}" /
+    <link rel="stylesheet" href="{% static voc.js %}"/>
+    <link rel="stylesheet" href="{% static 'index3_styles.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <title>VOC 현황</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/kt.png' %}" />
+    <META HTTP-EQUIV="refresh" CONTENT="10">
+{% endblock %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <div class="container">
+          <img src={% static 'images/Logo.png' %} alt="My Image" width="140" height="45">
+  </div>
+</nav>
+
+
+<body id="page-top">
+
+
+  
+  <header class="masthead text-center">
+    <div class="container d-flex align-items-center">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0" style="font-family:Y너만을비춤체;">VOC현황</h1>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0 p-2" >/ 현재 VOC현황을 확인하실 수 있습니다.</p>
+    </div>
+  </header>
+
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+      <div class="container-fluid">
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="button-container">
+              <button class='to-excel-button' type='button' onclick="exportAllToExcel()">엑셀로 보내기</button>
+              {% csrf_token %}
+              <button class='to-VOC-button' type='button' onclick="sendMMS()">TM전송</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered voc-table" id="dataTable" width="100%" cellspacing="0" style="text-align:center; vertical-align: center;">
+                <thead style="font-size:20px; font-family:Nanum Gothic; font-weight:900;">
+                  <tr bgcolor="#F5F5F5">
+                    <th style='width: 40px;'><input type="checkbox" class="check-all-voc" onclick="checkAllVoc()"></th>
+                    <th class='column'>TT번호</th>
+                    <th class='column'>전화번호</th>
+                    <th class="column">
+                      <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" id="fixFilterBtn" onclick="toggleDropdown('fixFilterDropdown')">
+                          <b>수리현황</b>
+                        </button>
+                        <div id="fixFilterDropdown" class="dropdown-menu" aria-labelledby="fixFilterBtn">
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatus('수리현황')">수리현황</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatus('수리중')">수리중</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatus('수리완료')">수리완료</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatus('수리전')">수리전</a>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="column">
+                      <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" id="vocFilterBtn" onclick="toggleDropdown('vocFilterDropdown')">
+                          <b>VOC현황</b>
+                        </button>
+                        <div id="vocFilterDropdown" class="dropdown-menu" aria-labelledby="vocFilterBtn">
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatusVoc('VOC현황')">VOC현황</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatusVoc('발송전')">발송전</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatusVoc('확인중')">확인중</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatusVoc('확인완료')">확인완료</a>
+                          <a class="dropdown-item" href="#" onclick="filterByRepairStatusVoc('추가조치필요')">추가조치필요</a>
+                        </div>
+                      </div>
+                    </th>
+                    <th class='column'>고객 의견</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for voc in voc_data %}
+                  {% comment %} {% if voc.voc_status != '확인완료' %} {% endcomment %}
+                  <tr class='tr-table-content'>
+                    <td class='column'><input type="checkbox" class="check-voc" data-phone="{{ voc.phone }}" data-comment="{{voc.comment}}" data-voc-status="{{ voc.voc_status }}" data-repair-status="{{ voc.repair_status }}"></td>
+                    <td class='voc_content'>{{ voc.tt }}</td>
+                    <td class='voc_content phone'>{{ voc.phone }}</td>
+                    <td class='voc_content repair-status'>{{ voc.repair_status }}</td>
+                    <td class='voc_content voc-status'>{{ voc.voc_status }}</td>
+                    {% if voc.comment %}
+                      <td class='voc_content'>
+                        <div class="comment-wrapper">
+                          <div class="comment-text-wrapper">
+                            {{ voc.comment|slice:":9" }}
+                            {% if voc.comment|length > 9 %}
+                            <button class="more-btn" data-bs-toggle="modal" data-bs-target="#moreModal{{ voc.id }}">...</button>  
+                            {% endif %}
+                          </div>
+                            
+                        
+                          
+                        </div>
+                      </td>
+                    {% endif %}
+                  </tr>
+
+                  <!-- 모달 창 -->
+                  <div class="modal fade" id="moreModal{{ voc.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" style='font-family:Y너만을비춤체;' id="staticBackdropLabel">사용자 의견</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group">
+                            <label for="id_comment" style="font-family:Y너만을비춤체;">Comment</label>
+                            <textarea class="form-control" id="id_comment" name="comment" rows="3" readonly>{{ voc.comment }}</textarea>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} {% endif %} {% endcomment %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <script>
+    {% comment %} setInterval(sendMMS, 5000); {% endcomment %}
+    
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      if (!cookieValue) {
+          var csrfEl = document.querySelector('input[name="csrfmiddlewaretoken"]');
+          if (csrfEl) {
+              cookieValue = csrfEl.value;
+          }
+      }
+      return cookieValue;
+  
+
+      function showMoreComment(button) {
+        const commentWrapper = button.parentNode;
+        const commentText = commentWrapper.querySelector('.comment-text');
+        button.style.display = 'none';
+        commentText.style.display = 'block';
+      }
+      
+  }
+    function checkAllVoc() {
+      var checkAllCheckbox = document.querySelector('.check-all-voc');
+      var vocCheckboxes = document.querySelectorAll('.check-voc');
+      var repairStatuses = document.querySelectorAll('.repair-status');
+    
+      var isCheckAllChecked = checkAllCheckbox.checked;
+    
+      vocCheckboxes.forEach(function (checkbox, index) {
+        var repairStatus = repairStatuses[index].textContent.trim();
+    
+        // 수리완료 상태인 경우만 체크박스를 선택
+        if (repairStatus === '수리완료') {
+          checkbox.checked = isCheckAllChecked;
+        } else {
+          checkbox.checked = false;
+        }
+      });
+    }
+    var individualCheckboxes = document.querySelectorAll('.check-voc');
+    var repairStatuses = document.querySelectorAll('.repair-status');
+    
+    individualCheckboxes.forEach(function (checkbox, index) {
+      checkbox.addEventListener('change', function () {
+        var repairStatus = repairStatuses[index].textContent.trim();
+    
+        // 수리완료 상태가 아님 체크 취소
+        if (repairStatus !== '수리완료') {
+          checkbox.checked = false;
+        }
+      });
+    });
+  
+  
+
+    function exportAllToExcel() {
+      // 테이블 데이터 가져오기
+      var table = document.querySelector('#dataTable');
+      var rows = table.getElementsByTagName('tr');
+    
+      // 테이블 헤더 가져오기
+      var headerRow = rows[0];
+      var headerData = [];
+      var headerCells = headerRow.getElementsByTagName('th');
+      for (var i = 0; i < headerCells.length; i++) {
+        var headerCell = headerCells[i];
+        headerData.push(headerCell.innerText);
+      }
+    
+      // 테이블 데이터를 배열로 변환
+      var data = [headerData];
+      for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var rowData = [];
+        var cells = row.getElementsByTagName('td');
+        for (var j = 0; j < cells.length - 1; j++) {
+          var cell = cells[j];
+          rowData.push(cell.innerText);
+        }
+    
+        // 더보기 내용 추가
+        var moreInfoCell = cells[cells.length - 1];
+        var moreInfoButton = moreInfoCell.getElementsByClassName('edit_button')[0];
+        var moreInfo = '';
+        if (moreInfoButton) {
+          moreInfo = moreInfoButton.getAttribute('data-comment');
+        }
+        rowData.push(moreInfo);
+    
+        data.push(rowData);
+      }
+    
+      // 데이터를 Workbook으로 변환
+      var workbook = XLSX.utils.book_new();
+      var worksheet = XLSX.utils.aoa_to_sheet(data);
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    
+      // Workbook을 엑셀 파일로 저장
+      var wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'binary' });
+    
+      function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i = 0; i < s.length; i++) {
+          view[i] = s.charCodeAt(i) & 0xFF;
+        }
+        return buf;
+      }
+    
+      var blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
+      var downloadLink = document.createElement('a');
+      downloadLink.href = window.URL.createObjectURL(blob);
+      downloadLink.download = 'voc_data.xlsx';
+      downloadLink.click();
+    }
+
+    function sendMMS() {
+      console.log('sendMMS() called');
+      /*버전 1
+      var vocCheckboxes = document.getElementsByClassName('check-voc');
+      var selectedPhoneNumbers = [];
+  
+      // 선택된 체크박스에서 전화번호 추출
+      for (var i = 0; i < vocCheckboxes.length; i++) {
+        if (vocCheckboxes[i].checked) {
+          var phoneNum = vocCheckboxes[i].getAttribute('data-phone');
+          selectedPhoneNumbers.push(phoneNum);
+        }
+      }*/
+     
+      var vocElements = document.getElementsByClassName('tr-table-content');
+      var selectedPhoneNumbers = [];
+
+      for (var i = 0; i < vocElements.length; i++) {
+        var repairStatusElement = vocElements[i].querySelector('.repair-status');
+        var vocStatusElement = vocElements[i].querySelector('.voc-status');
+        var repairStatus = repairStatusElement.textContent.trim();
+        var vocStatus = vocStatusElement.textContent.trim();
+
+        if (repairStatus === '수리완료' && vocStatus === '발송전') {
+          var phoneNumElement = vocElements[i].querySelector('.phone');
+          var phoneNum = phoneNumElement.textContent.trim();
+          selectedPhoneNumbers.push(phoneNum);
+        }
+      }
+
+      console.log('Selected Phone Numbers:', selectedPhoneNumbers);
+
+
+      var csrfToken = getCookie('csrftoken');
+      console.log('CSRF Token:', csrfToken);
+  
+      // 프록시 URL로 MMS 전송 요청
+      fetch('/aici/send_mms_proxy/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify({
+          phone_numbers: selectedPhoneNumbers
+        })
+      })
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('MMS 전송에 실패했습니다.');
+          }
+        })
+        .then(function (data) {
+          //alert(data.message);
+        })
+        .catch(function (error) {
+          console.error('MMS 전송 중 오류가 발생했습니다:', error);
+          //alert('MMS 전송 중 오류가 발생했습니다. 다시 시도해주세요.');
+        });
+    } 
+    // sendMMS 함수를 5초마다 호출
+    setInterval(sendMMS, 5000);
+
+    // 6초 후에 페이지를 새로고침
+    setTimeout(function() {
+      location.reload();
+    }, 6000);
+
+    function toggleDropdown(dropdownId) {
+      var dropdown = document.getElementById(dropdownId);
+      dropdown.classList.toggle('show');
+    }
+    
+    function showAllRows() {
+      var rows = document.getElementsByClassName('tr-table-content');
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        row.style.display = 'table-row';
+      }
+    }
+    
+    function filterByRepairStatus(repairStatus) {
+      showAllRows();
+    
+      var rows = document.getElementsByClassName('tr-table-content');
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var repairStatusCell = row.getElementsByClassName('repair-status')[0];
+        var currentRepairStatus = repairStatusCell.innerText;
+    
+        if (repairStatus !== '수리현황' && currentRepairStatus !== repairStatus) {
+          row.style.display = 'none';
+        }
+      }
+      var dropdown = document.getElementById("fixFilterDropdown");
+      dropdown.classList.remove("show");
+    }
+    
+    function filterByRepairStatusVoc(vocStatus) {
+      showAllRows();
+    
+      var rows = document.getElementsByClassName('tr-table-content');
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var vocStatusCell = row.getElementsByClassName('voc-status')[0];
+        var currentVocStatus = vocStatusCell.innerText;
+    
+        if (vocStatus !== 'VOC현황' && currentVocStatus !== vocStatus) {
+          row.style.display = 'none';
+        } else if (vocStatus === '확인완료' && currentVocStatus === vocStatus) {
+          row.style.display = 'table-row';
+        }
+      }
+      var dropdown = document.getElementById("vocFilterDropdown");
+      dropdown.classList.remove("show");
+    }
+    
+ 
+  </script>
+{% endblock %}

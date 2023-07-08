@@ -1,0 +1,406 @@
+{% extends "aici/base.html" %}
+
+{% load static %}
+{% block static %}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>KT_AICI</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="{% static 'images/kt.png' %}" />
+<link rel="stylesheet" href="{% static voc.js %}"/>
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+<!-- Core theme CSS (includes Bootstrap)-->
+
+<!-- <link href="css/sb-admin-2.css" rel="stylesheet"> -->
+<!-- Custom fonts for this template-->
+<link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+
+
+
+<!-- Page level plugins -->
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> {% endcomment %}
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'chart-bar-demo.js' %}"></script>
+{% comment %} <script src="{% static 'scripts.js' %}"></script> {% endcomment %}
+<script src="{% static 'voc.js' %}"></script>
+<script src="{% static 'work.js' %}"></script>
+{% comment %} <link rel="stylesheet" href="{% static 'styles2.css' %}"  /> {% endcomment %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<style>
+    .hoverbutton:hover{
+        display: inline;
+        box-shadow: inset 0 -10px 0 #5ddfde; 
+        position: relative;
+      }
+
+</style>
+
+<body id="page-top">
+<div id="Wrapper" style='margin-top: 20px;'>
+    <div class="container text-center" style='border-bottom: none;'>
+        <div class="row">
+            <div class="col-xl-2 col-md-10 mb-10" style="margin-top: 127px;">
+                <!-- <div>
+                    <img src="images/Logo.png" alt="My Image" width="130" height="45">
+                </div> -->
+
+                
+
+                <div class="wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" style="font-weight:bold;" background='#FFFFFF' type="button;" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                QUICK<br>MENU
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body" style="text-align: left;">
+                                    <h6 style = 'font-family:Nanum Gothic;'>공사접수 서비스</h6>
+                                     
+                                    
+                                        
+                                    <li>
+                                        <button style="border:none; background:none;" class ="hoverbutton" onclick="openPopup('work')" >공사 접수 현황</button>
+                                    </li>
+
+                                    <br><br>
+
+                                    <h6 style = "font-family:Nanum Gothic;">VOC 서비스</h6>
+                                    <li>
+                                        <button style="border:none; background:none;"  class ="hoverbutton" onclick="openPopup('voc')">voc 현황</button>
+                                    </li>
+                                    
+                                </div>
+                            </div>
+                        
+                        </div>
+                    
+                    </div>
+
+
+                    {% comment %} <div class="text-bg-gray p-0">
+                        <div class="menu fs-4 fw-bold">Menu</div>
+                    </div>
+                    <div class="navbox text-bg-gray2 p-0">
+
+                        <div class="portfolio-item"  style='text-align: left;'>
+                            <button class="list1 fs-6"
+                            style="text-align: left; padding-top:2em; border:none; background-color: Transparent; text" onclick="openPopup('work')">
+                            &#183; 공사 접수 현황</button>
+                        
+                            
+                        </div>
+                        <hr class="sidebar-divider my-0">
+                        <div class="portfolio-item" style='text-align: left;'>
+                            <button class="list1 fs-6"
+                                    style="text-align: left; padding-top:2em; padding-bottom:2em; border:none; background-color: Transparent;" onclick="openPopup('voc')">
+                                    &#183; VOC 현황</button>
+                            <!-- <div class="list1 fs-6" style="text-align: left; padding-top:1em; padding-left:1em; padding-bottom:2em; "> &#183; VOC 현황</div> -->
+                            <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
+                        </div>
+
+                    </div> {% endcomment %}
+                </div>
+            </div>
+
+            <div class="col-xl-10 col-md-10 mb-10" style="margin-top: 70px; ">
+                <div class= "gongsa">
+                    <button type="button" class='go-to-section clicked' onclick="go_to_gongsa()">공사접수 요약</button>
+                    <button type="button" class='go-to-section' onclick="go_to_voc()">VOC 요약</button>
+                </div>
+
+                <div id = 'gongsa-section' class="p-0" style="text-align:left;">
+                    
+                    <div class="row">
+                        <div class="col-xl-4 col-md-4 mb-4 p-1">
+                            <div class="card shadow h-100 py-1">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="card-header text-xs font-weight-bold text-uppercase mb-1" style='font-family:Y너만을비춤체; text-align: center; background-color: #FFFFFF'>신규 접수
+                                                공사 수
+                                            </div>
+                                            <div class="row no-gutters align-items-center" style='text-align: center'>
+                                                <!-- <div class="col-auto"> -->
+                        <span class="status-value">{{ registered_constructions }}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-4 mb-4 p-1">
+                            <div class="card shadow h-100 py-1">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="card-header text-xs font-weight-bold text-uppercase mb-1" style='text-align: center; background-color: #FFFFFF; font-family:Y너만을비춤체'>금일 진행
+                                                공사 수
+                                            </div>
+                                            <div class="row no-gutters align-items-center" style='text-align: center'>
+                                                <!-- <div class="col-auto"> -->
+                                                    <span class="status-value">{{ daily_constructions }}</span>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-4 mb-4 p-1">
+                            <div class="card shadow h-100 py-1">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="card-header text-xs font-weight-bold text-uppercase mb-1" style='text-align: center; background-color: #FFFFFF; font-family:Y너만을비춤체;'>주간 예정
+                                                공사 수
+                                            </div>
+                                            <div class="row no-gutters align-items-center" style='text-align: center'>
+                                                <!-- <div class="col-auto"> -->
+                                                    <span class="status-value">{{ weekly_constructions }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="row">
+                    <div class="col-xl-12 col-md-12 mb-12">
+                        <div class="card shadow">
+
+                            <div class="card-body" style='height: 438px;'>
+                                <div id="chart-container"></div>
+                                <hr>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+            
+                <div  class="voc p-0">
+                    <div id ='voc-section' class="p-1 voc-section" style="text-align: left;" >
+                        <div class="row">
+                            <div class="col-xl-3 col-md-3 mb-3 p-1">
+                                <div class="card shadow h-100 py-1">
+                                    <div class="card-body">
+                                         <div class="row no-gutters align-items-center">
+                                              <div class="col mr-2" style="text-align: center">
+                                                <div class="card-header text-xs font-weight-bold text-uppercase mb-1" style='background-color: #FFFFFF ; font-family:Y너만을비춤체;' >
+                                                확인전
+                                                 </div>
+                                              <div class="row no-gutters align-items-center">
+                                            <span class="status-value" style="text-align: center">{{ preparing_vocs }}</span>
+                                                    </div>
+                                            </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-xl-3 col-md-3 mb-3 p-1">
+                                <div class="card shadow h-100 py-1">
+                                    <div class="card-body" >
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2" style="text-align: center">
+                                                <div class="card-header text-xs font-weight-bold text-uppercase mb-1"  style='background-color: #FFFFFF; font-family:Y너만을비춤체;'>
+                                                    확인중
+                                                </div>
+                                                <div class="row no-gutters align-items-center">
+                                                <span class="status-value" style="text-align: center">{{ processing_vocs }}</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-3 mb-3 p-1">
+                                <div class="card shadow h-100 py-1">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2" style="text-align: center">
+                                                <div class="card-header text-xs font-weight-bold text-uppercase mb-1"  style='background-color: #FFFFFF; font-family:Y너만을비춤체;'>
+                                                    추가조치필요
+                                                </div>
+                                                <div class="row no-gutters align-items-center">
+                                                <span class="status-value" style="text-align: center">{{ reprocessing_vocs }}</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-3 mb-3 p-2">
+                                <div class="card border-left-info shadow h-100 py-1">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2" style="text-align: center">
+                                                <div class="card-header text-xs font-weight-bold text-uppercase mb-1"  style='background-color: #FFFFFF; font-family:Y너만을비춤체;'>
+                                                    최종완료
+                                                </div>
+                                                <div class="row no-gutters align-items-center">
+                                                <span class="status-value" style="text-align: center">{{ completed_voc }}</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 mb-12">
+                                <div class="card shadow">
+
+                                    <div class="card-body" style='height: 438px;'>
+                                        <div class="chart-bar">
+                                            <div id="voc-chart-container"></div>
+                                        </div>
+                                        <hr>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</body>
+
+
+
+
+    <script>
+
+        var xData_gongsa = {{ xData_gongsa|safe }};
+        var yData_gongsa = {{ yData_gongsa|safe }};
+        var xData_voc = {{ xData_voc|safe }};
+        var yData_voc = {{ yData_voc|safe }};
+
+        gongsaGraph(xData_gongsa, yData_gongsa);
+        vocGraph(xData_voc, yData_voc);
+
+        function gongsaGraph(xData, yData) {
+            var emptyData = Array(xData.length - yData.length).fill(0);
+            yData = emptyData.concat(yData.reverse());
+            xData = xData.reverse();
+
+            Highcharts.setOptions({
+                colors:['#ff0000']
+            })
+
+            Highcharts.chart('chart-container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: '공사 현황'
+                },
+                xAxis: {
+                    categories: xData.reverse()
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '진행예정공사수'
+                    }
+                },
+                series: [{
+                    name: 'Construction Status',
+                    data: yData.reverse()
+                }]
+            });
+        }
+        function vocGraph(xData, yData) { 
+            var emptyData = Array(xData.length - yData.length).fill(0);
+            yData = emptyData.concat(yData.reverse());
+            xData = xData.reverse();
+        
+            Highcharts.chart('voc-chart-container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'VOC 현황' 
+                },
+                xAxis: {
+                    categories: xData.reverse()
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '전체NW장애건수'
+                    }
+                },
+                series: [{
+                    name: 'VOC Status', 
+                    data: yData.reverse()
+                }]
+            });
+        }
+
+          
+          function openPopup(url) {
+            window.open(url, "_blank", "width=1200, height=650, top=50, left=50, resizable=yes, scrollbars=yes");
+
+        }
+
+
+
+        function go_to_gongsa() {
+            document.getElementById("voc-section").style.display = "none";
+            document.getElementById("gongsa-section").style.display = "block";
+        }
+        
+        function go_to_voc() {
+            document.getElementById("voc-section").style.display = "block";
+            document.getElementById("gongsa-section").style.display = "none";
+        }
+
+        $('.go-to-section').click(function(){
+            $('.go-to-section').removeClass("clicked");
+            $(this).addClass("clicked");
+          });
+
+        
+        
+
+        
+    </script>
+
+    
+
+
+</html>
+{% endblock %}

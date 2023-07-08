@@ -1,0 +1,168 @@
+
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static '/chatbot.css' %}">
+    <link rel="stylesheet" href={% static 'index3_styles.css' %}/>
+    <!-- Add any other static file connections (CSS files, etc.) here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'chatbot.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav"  style='background-color: #0AA2B9;'>
+        <div class="container">
+            <p float='left'><img src={% static 'images/kt_logo2.png' %} alt="My Image" width="45" height="45"></p>
+            <div style='margin: 0 auto; font-size: 20px; color: #ffffff;' class='kt-ai-bot'>
+            kt AI봇
+            </div>
+        </div>
+    </nav>
+
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top" style='background-color: #ECEDF0'>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container">
+                <div class="row justify-content-center" style="width: 100%; height: 75%;">
+                    <div style="margin-left: 30px; width:100%; position: relative; vertical-align: middle;">
+                        <img src="{% static 'images/말풍선.png' %}" alt="My Image" style='width: 100%; height: 80%;'>
+                    <p class="typing-txt">안녕하십니까? 접수해주신 nw 장애 처리해드렸는데 수리 완료 되었을까요? 수리가 완료되지 않았거나 불편사항이 있으시다면 말씀해주세요.</p> 
+                        <p class="typing"></p>
+                    </div>
+                    <div class = 'input_div' style=" width:100%" >
+                        <img class ="standing" src="{% static 'images/꾸벅듀오.png' %}"  alt="hello_image" width="80%" height="auto">
+                    </div>
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <div id="contactForm" data-sb-form-api-token="API_TOKEN" style="padding-bottom:0%;">
+                        <!-- Sentence input-->
+                        <div class="row input-group-newsletter input_div">
+                            <div class="col">
+                                <form method="post" action="{% url 'aici:chatbot' %}">
+                                    {% csrf_token %}
+                                    <div class="input-group">
+                                        <input class="form-control" id="comment" type="sentence" placeholder="내용을 입력해주세요." onkeydown="handleKeyDown(event)" data-sb-validations="required,sentence" />
+                                        <button class="btn btn-primary" id="send-button" type="submit" style='background-color: #0AA2B9'>전송</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="invalid-feedback mt-2" data-sb-feedback="email:required">An email is required.</div>
+                        <div class="invalid-feedback mt-2" data-sb-feedback="email:email">Email is not valid.</div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3 mt-2">
+                                <div class="fw-bolder">Form submission successful!</div>
+                                To activate this form, sign up at
+                                <br />
+                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <style>
+            .standing {margin-bottom: 50px;
+               }
+               html,
+               body {
+                 width: 100%;
+                 height: 100%;
+               }
+               .masthead {
+                 width: 100%;
+                 height: 100%;
+               }
+        </style>
+    </body>
+
+
+    <script>
+        var typingBool = false;
+    var typingIdx = 0;
+
+    var typingTxt = $(".typing-txt").text();
+
+    typingTxt = typingTxt.split("");
+
+    if (typingBool == false) {
+    typingBool = true;
+    var tyInt = setInterval(typing, 100);
+    }
+
+    function typing() {
+    if (typingIdx < typingTxt.length) {
+        $(".typing").append(typingTxt[typingIdx]);
+        typingIdx++;
+    } else {
+        clearInterval(tyInt);
+    }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        var sendButton = document.querySelector('.send-button');
+        sendButton.addEventListener('click', checkResponse);
+    });
+
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') { // Enter 키를 눌렀을 때
+            checkResponse();
+        }
+    }
+
+    function checkResponse() {
+        var response = document.querySelector('.chatting-textbox').value;
+        if (response === '네') {
+            window.location.href = "{% url 'aici:positive' %}";
+        } else if (response === '아니요') {
+            window.location.href = "{% url 'aici:negative' %}";
+        }
+    }
+
+    </script>
+</html>
+
+
+{% endblock %}

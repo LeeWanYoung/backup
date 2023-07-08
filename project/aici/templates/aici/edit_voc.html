@@ -1,0 +1,25 @@
+{% extends "aici/base.html" %}
+
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static '/edit_voc.css' %}">
+    <script src="{% static '/edit_voc.js' %}"></script>
+
+    <!-- Add any other static file connections (CSS files, etc.) here -->
+{% endblock %}
+
+{% block content %}
+<div class="modal">
+  <div class="modal_body">
+    <h2>사용자의견</h2>
+
+    <div class="form-group">
+      <label for="id_comment">Comment</label>
+      
+      <textarea class="form-control" id="id_comment" name="comment" rows="3" readonly>{{ comment }}</textarea>
+      <button class="return-button" onclick='edit_cancel()'>돌아가기</button>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

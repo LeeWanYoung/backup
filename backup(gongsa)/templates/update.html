@@ -1,0 +1,62 @@
+{% extends "gongsa/base_gongsa.html" %}
+
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static '/upload.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+  <div class="form-container">
+    <h2>사외공사접수</h2>
+
+    <div class="form-group">
+      <label for="id_date">접수일자</label>
+      <input type="text" class="form-control" id="id_date" name="date" value="{{ form.instance.created_at|date:"Y-m-d" }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="id_department">접수 기관</label>        
+      <input type="text" class="form-control" id="id_department" name="department" value="{{ form.initial.agency }}" readonly>
+
+    </div>
+    
+
+    <div class="form-group">
+      <label for="id_department">접수 부서</label>
+      <input type="text" class="form-control" id="id_department" name="department" value="{{ form.initial.department }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="id_contact">연락처</label>
+      <input type="text" class="form-control" id="id_contact" name="contact" value="{{ form.initial.phone }}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="id_person">담당자</label>
+      <input type="text" class="form-control" id="id_person" name="person" value="{{ form.initial.author }}" readonly>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_construction_type">공사종류</label>
+          {{ form.construction_type }}
+        </div>
+        <div class="form-group">
+          <label for="id_start_at">공사 시작일</label>
+          {{ form.start_at }}
+        </div>
+        <div class="form-group">
+          <label for="id_end_at">공사 종료일</label>
+          {{ form.end_at }}
+        </div>
+        <div class="form-group">
+          <label for="id_content">기타 내용</label>
+          {{ form.content }}
+        </div>
+        <button type="submit" class="btn btn-submit">수정하기</button>
+      </form>
+  </div>
+</div>
+{% endblock %}

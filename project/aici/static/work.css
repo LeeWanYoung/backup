@@ -1,0 +1,172 @@
+#error-message {
+  display: block;
+  color: red;
+}
+
+.container {
+    position: relative;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    
+  }
+  
+  .logo-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .kt-logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .aici-text {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  
+  /* worklist.css */
+  
+  /* Center and style the '접수 확인' heading */
+  h3.text-center {
+    text-align: left;
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin-top: 50px; /* Add some top margin for spacing */
+    margin-left: 30px;
+    
+  }
+  
+  /* Add some spacing and alignment to table cells */
+  table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-left: 20px;  /* Add left padding */
+    padding-right: 20px; /* Add right padding */
+    
+  }
+  tr,
+  th,
+  td {
+    padding: 5px 5px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  td {
+    border-bottom: 1px solid #ccc; /* Adjust the border color and style as needed */
+  }
+  
+  /* Apply alternate background color to table rows for better readability */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style the '수정하기' button */
+/* Add the following code to the existing CSS */
+
+.export-button {
+    float: right; /* Move the button to the right */
+    font-size: 12px; /* Adjust the font size to make it smaller */
+    padding: 5px 10px; /* Adjust the padding to make it smaller */
+    margin-top: 10px; /* Add some top margin for spacing */
+}
+
+  
+  .export-button:hover,
+  .export-button:focus {
+    background-color: #cc0000; /* 빨간색으로 변경 */
+    color: #fff;
+  }
+
+.search-match {
+    background-color: yellow; /* Change the background color to highlight the matching rows */
+    color: black; /* Change the text color to ensure readability */
+}
+
+.search-box{
+  margin-top: 30px;
+}
+
+#dateFilterImg,
+#agencyFilterImg,
+#departmentFilterImg{
+    width: 30px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    
+  }
+
+
+.to-excel-button {
+    background-color: #00994c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    float: right;
+    font-weight: bold;
+    margin-right: 50px;
+    font-size: 18px;
+}
+
+@font-face {
+  font-family: "Ycomputer";
+  src:url('fonts/Ycomputer.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YdestreetB";
+  src:url('fonts/YdestreetB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YdestreetL";
+  src:url('fonts/YdestreetL.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YUniverse-B";
+  src:url('fonts/YUniverse-B.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "YUniverse-L";
+  src:url('fonts/YUniverse-L.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ycomputer";
+  src:url('fonts/Ycomputer.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Y너만을비춤체";
+  src:url('fonts/Y너만을비춤체.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+

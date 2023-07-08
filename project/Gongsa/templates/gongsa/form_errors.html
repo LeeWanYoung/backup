@@ -1,0 +1,48 @@
+<!-- users/form_errors.html -->
+
+{% if form.errors %}
+  <div class="form-errors">
+    {% for field in form %}
+      {% for error in field.errors %}
+        <!-- 필드 오류를 출력한다. -->
+        <div class="field-error">
+          <strong>{{ field.label }}</strong>
+          {{ error }}
+        </div>
+      {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+      <!-- 넌필드 오류를 출력한다. -->
+      <div class="non-field-error">
+        <strong>{{ error }}</strong>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<style>
+  .form-errors {
+    background-color: #F8D7DA;
+    border: 1px solid #DC3545;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  .field-error {
+    color: #721C24;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .loginsection{
+    height: 550px !important;
+  }
+
+  /* 넌필드 오류 스타일 */
+  .non-field-error {
+    color: #721C24;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+</style>

@@ -1,0 +1,174 @@
+.container {
+	position: relative;
+  }
+  
+  .header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+	background-color: #f1f1f1;
+	margin-bottom: 10px;
+  }
+  
+  .logo-section {
+	display: flex;
+	align-items: center;
+  }
+  
+  .kt-logo {
+	height: 40px;
+	margin-right: 10px;
+  }
+  
+  .aici-text {
+	font-size: 14px;
+	font-weight: bold;
+  }
+  /* Add the following styles to your CSS file */
+
+/* Center the content wrapper */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* Style the form container */
+  .modal_body {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Style the submit button */
+  .btn-submit {
+    background-color: red;
+    color: #fff;
+  }
+  
+  /* upload.css */
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    width: 400px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .btn-submit {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #f44336;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #d32f2f;
+  }
+  
+  input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+  
+
+
+  .return-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: 0.25px solid #000000;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top : 10px;
+  }
+
+  .btn-cancel:hover {
+    background-color: #ff8181;
+  }
+
+  @font-face {
+    font-family: "Ycomputer";
+    src:url('fonts/Ycomputer.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "YdestreetB";
+    src:url('fonts/YdestreetB.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "YdestreetL";
+    src:url('fonts/YdestreetL.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "YUniverse-B";
+    src:url('fonts/YUniverse-B.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "YUniverse-L";
+    src:url('fonts/YUniverse-L.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Ycomputer";
+    src:url('fonts/Ycomputer.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Y너만을비춤체";
+    src:url('fonts/Y너만을비춤체.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
